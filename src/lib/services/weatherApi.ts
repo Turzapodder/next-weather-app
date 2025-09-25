@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { UnitSystem } from '../slices/unitsSlice';
 
 const API_KEY = '9d729cfd40c256defac28e6a8266b774';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
@@ -101,11 +102,11 @@ export const weatherApi = createApi({
   reducerPath: 'weatherApi',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
-    getCurrentWeather: builder.query<WeatherData, string>({
-      query: (city) => `weather?q=${city}&appid=${API_KEY}&units=metric`,
+    getCurrentWeather: builder.query<WeatherData, { city: string; units: UnitSystem }>({
+      query: ({ city, units }) => `weather?q=${city}&appid=${API_KEY}&units=${units}`,
     }),
-    getForecast: builder.query<ForecastData, string>({
-      query: (city) => `forecast?q=${city}&appid=${API_KEY}&units=metric`,
+    getForecast: builder.query<ForecastData, { city: string; units: UnitSystem }>({
+      query: ({ city, units }) => `forecast?q=${city}&appid=${API_KEY}&units=${units}`,
     }),
     searchCities: builder.query<GeocodingData[], string>({
       query: (query) => 
