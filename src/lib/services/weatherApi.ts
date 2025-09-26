@@ -1,8 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { UnitSystem } from '../slices/unitsSlice';
 
-const API_KEY = '9d729cfd40c256defac28e6a8266b774';
-const BASE_URL = 'https://api.openweathermap.org/data/2.5';
+const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
+const BASE_URL = process.env.NEXT_PUBLIC_OPENWEATHER_BASE_URL;
+
+if (!API_KEY || !BASE_URL) {
+  throw new Error('Missing required environment variables: NEXT_PUBLIC_OPENWEATHER_API_KEY and NEXT_PUBLIC_OPENWEATHER_BASE_URL');
+}
 
 export interface WeatherData {
   coord: { lon: number; lat: number };

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   images: {
@@ -10,6 +11,9 @@ const nextConfig: NextConfig = {
         pathname: '/img/wn/**',
       },
     ],
+  },
+  turbopack: {
+    root: path.resolve(__dirname), // Explicitly define the root directory
   },
 };
 

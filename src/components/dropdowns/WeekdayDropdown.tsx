@@ -36,7 +36,7 @@ export default function WeekdayDropdown({ selectedDay, onDaySelect }: WeekdayDro
       {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between px-4 py-2 bg-[#262540] text-white rounded-lg border border-slate-700 hover:bg-[#302F4A] transition-colors min-w-[120px]"
+        className="flex items-center gap-2 justify-between cursor-pointer px-4 py-2 bg-[#262540] text-white rounded-lg border border-slate-700 hover:bg-[#302F4A] transition-colors min-w-[120px]"
       >
         <span className="text-sm font-medium">{selectedDay}</span>
         <svg
@@ -51,15 +51,15 @@ export default function WeekdayDropdown({ selectedDay, onDaySelect }: WeekdayDro
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 bg-[#262540] rounded-lg shadow-xl border border-slate-700 overflow-hidden z-50 min-w-[120px]">
-          <div className="py-2">
+        <div className="absolute top-full right-0 mt-2 bg-[#262540] rounded-lg shadow-xl border border-slate-700 overflow-hidden z-50 min-w-[200px] p-2">
+          <div>
             {availableDays.map((day) => (
               <button
                 key={day}
                 onClick={() => handleDaySelect(day)}
-                className={`w-full px-4 py-3 text-left text-sm transition-colors ${
+                className={`w-full px-2 py-2 mb-2 text-left text-sm transition-colors cursor-pointer rounded-md ${
                   selectedDay === day
-                    ? 'bg-[#4658D9] text-white'
+                    ? 'bg-[#302F4A] text-white'
                     : 'text-white hover:bg-[#302F4A]'
                 }`}
               >
